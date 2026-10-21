@@ -88,18 +88,17 @@ export default function App() {
               BUILDING THINGS WITH PURPOSE
             </p>
 
+          
             <div className="portrait-frame">
-              <div className="portrait-placeholder">
-                <span>
-                  YOUR
-                  <br />
-                  PORTRAIT
-                </span>
-              </div>
+              <img 
+                src="/portrait.jpg" 
+                alt="Nirika Lamichhane" 
+                className="portrait-image" 
+              />
             </div>
 
             <h1 id="hero-title">
-              Your Name<span>.</span>
+              Nirika Lamichhane<span>.</span>
             </h1>
 
             <p className="hero-description">

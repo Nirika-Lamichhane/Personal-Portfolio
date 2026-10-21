@@ -106,7 +106,7 @@
 
 
 .portrait-frame {
-  width: clamp(160px, 20vw, 220px);
+  width: clamp(180px, 22vmin, 260px);
   aspect-ratio: 1;
   overflow: hidden;
   padding: 0;
@@ -114,19 +114,31 @@
   border-radius: 50%;
   background: #c7bda9;
   box-shadow: 0 12px 36px rgba(70, 57, 42, 0.12);
+
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.portrait-placeholder {
-  display: grid;
+.portrait-frame:hover {
+  box-shadow: 0 20px 50px rgba(70, 57, 42, 0.25);
+  transform: translateY(-8px);
+}
+
+.portrait-image {
   width: 100%;
   height: 100%;
-  place-items: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #c9c0ae, #a8a48c);
-  color: #514e42;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  line-height: 1.8;
+  object-fit: cover;
+  object-position: center 90; 
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
+  
+  filter: saturate(0.85);
+}
+
+.portrait-frame:hover .portrait-image {
+  /* Zooms in AND tilts slightly */
+  transform: scale(1.12) rotate(3deg); 
+  
+  /* Brings full color and slight brightness back */
+  filter: saturate(1.1) brightness(1.05); 
 }
 
 
