@@ -146,6 +146,30 @@ html, body {
   transform: scale(1.12) rotate(3deg); 
 }
 
+/* Centers the links in the footer */
+.bottom-bar.center-footer {
+  justify-content: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2.5rem; /* Spreads the links out nicely */
+}
+
+/* Base styles for the SVG icons */
+.social-icon {
+  color: #111111; /* Default icon color */
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The Hover Effect: Turns pink and lifts/scales up slightly */
+.social-icon:hover {
+  color: #e91e63; /* Pink highlight matches your portrait */
+  transform: translateY(-4px) scale(1.1); 
+}
 
 .hero h1 {
   margin: 27px 0 9px;
