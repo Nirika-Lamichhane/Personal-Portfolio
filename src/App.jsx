@@ -1,8 +1,7 @@
-
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const sections = ["Home", "About", "Projects","Experience", "Skills", "Contact"];
+const sections = ["Home", "About", "Projects", "Experience", "Skills", "Contact"];
 
 function getSectionFromUrl() {
   const section = window.location.hash.slice(1);
@@ -58,6 +57,8 @@ export default function App() {
           PORTFOLIO<span>.</span>
         </button>
 
+        <div aria-hidden='true'> </div>
+
         <nav className="navigation" aria-label="Main navigation">
           {sections.map((section) => (
             <button
@@ -88,26 +89,41 @@ export default function App() {
               BUILDING THINGS WITH PURPOSE
             </p>
 
-          
             <div className="portrait-frame">
               <img 
-                src="/portrait.jpg" 
+                src="/portrait.png" 
                 alt="Nirika Lamichhane" 
                 className="portrait-image" 
               />
             </div>
 
             <h1 id="hero-title">
-              Nirika Lamichhane<span>.</span>
+              Nirika Lamichhane
             </h1>
 
             <p className="hero-description">
-              Tech student · Developer · Creative thinker
+              Machine Learning · NLP · Full-Stack Development
             </p>
+            
+            <div className="hero-actions" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+              <button 
+                className="contact-button" 
+                onClick={() => navigateTo("Projects")}
+                style={{ cursor: 'pointer' }}
+              >
+                See My Work
+                <span aria-hidden="true" style={{ marginLeft: '8px' }}>↗</span>
+              </button>
+            </div>
 
-            <p className="hero-hint">
-              CURIOUS BY NATURE. ALWAYS BUILDING.
-            </p>
+           <div className="floating-tech-stack" aria-hidden="true">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="tech-icon py" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" alt="PyTorch" className="tech-icon pt" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" className="tech-icon re" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" className="tech-icon tf" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/keras/keras-original.svg" alt="Keras" className="tech-icon ke" />
+            </div>
+
           </>
         )}
 
@@ -270,229 +286,228 @@ export default function App() {
             </p>
           </div>
         )}
+
+        {activeSection === "Experience" && (
+          <div className="experience-layout">
+            <div className="experience-heading">
+              <p className="eyebrow">
+                <span className="status-dot" />
+                MY PROFESSIONAL JOURNEY
+              </p>
+
+              <h1 id="hero-title" className="experience-title">
+                Experience &
+                <br />
+                <span>growth.</span>
+              </h1>
+
+              <p className="experience-intro">
+                A record of the roles, collaborations, and opportunities
+                that have shaped my journey in technology.
+              </p>
+            </div>
+
+            <div className="experience-list">
+              <article className="experience-item">
+                <div className="experience-marker">
+                  <span />
+                </div>
+
+                <div className="experience-meta">
+                  <span>EXPERIENCE 01</span>
+                  <span>DATE TBD</span>
+                </div>
+
+                <div className="experience-content">
+                  <p className="experience-type">ROLE / PLACEHOLDER</p>
+                  <h2>Your First Role</h2>
+                  <p className="experience-company">
+                    Organization or Company Name
+                  </p>
+                  <p className="experience-description">
+                    Add a brief summary of your responsibilities,
+                    the work you contributed to, and what you learned.
+                  </p>
+                  <div className="experience-tags">
+                    <span>Collaboration</span>
+                    <span>Problem-solving</span>
+                  </div>
+                </div>
+              </article>
+
+              <article className="experience-item">
+                <div className="experience-marker">
+                  <span />
+                </div>
+
+                <div className="experience-meta">
+                  <span>EXPERIENCE 02</span>
+                  <span>DATE TBD</span>
+                </div>
+
+                <div className="experience-content">
+                  <p className="experience-type">ROLE / PLACEHOLDER</p>
+                  <h2>Your Second Role</h2>
+                  <p className="experience-company">
+                    Organization, Internship, or Team
+                  </p>
+                  <p className="experience-description">
+                    Describe another relevant role, internship, team
+                    contribution, or professional experience here.
+                  </p>
+                  <div className="experience-tags">
+                    <span>Technology</span>
+                    <span>Learning</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <p className="experience-footer">
+              EVERY EXPERIENCE IS AN OPPORTUNITY TO GROW.
+            </p>
+          </div>
+        )}
+
+        {activeSection === "Skills" && (
+          <div className="skills-layout">
+            <div className="skills-heading">
+              <p className="eyebrow">
+                <span className="status-dot" />
+                MY TOOLKIT
+              </p>
+
+              <h1 id="hero-title" className="skills-title">
+                Skills &
+                <br />
+                <span>curiosity.</span>
+              </h1>
+
+              <p className="skills-intro">
+                The tools, concepts, and technical areas I’m exploring
+                as I grow as an engineer and developer.
+              </p>
+            </div>
+
+            <div className="skills-grid">
+              <article className="skill-card">
+                <span className="skill-number">01</span>
+                <h2>Programming</h2>
+                <p>Languages and foundations</p>
+                <div className="skill-tags">
+                  <span>Language 01</span>
+                  <span>Language 02</span>
+                  <span>Language 03</span>
+                </div>
+              </article>
+
+              <article className="skill-card">
+                <span className="skill-number">02</span>
+                <h2>AI & Machine Learning</h2>
+                <p>Intelligent systems and experimentation</p>
+                <div className="skill-tags">
+                  <span>Topic 01</span>
+                  <span>Topic 02</span>
+                  <span>Topic 03</span>
+                </div>
+              </article>
+
+              <article className="skill-card">
+                <span className="skill-number">03</span>
+                <h2>Web Development</h2>
+                <p>Building interactive digital experiences</p>
+                <div className="skill-tags">
+                  <span>Technology 01</span>
+                  <span>Technology 02</span>
+                  <span>Technology 03</span>
+                </div>
+              </article>
+
+              <article className="skill-card">
+                <span className="skill-number">04</span>
+                <h2>Tools & Workflow</h2>
+                <p>Tools for building and collaboration</p>
+                <div className="skill-tags">
+                  <span>Tool 01</span>
+                  <span>Tool 02</span>
+                  <span>Tool 03</span>
+                </div>
+              </article>
+            </div>
+
+            <p className="skills-note">
+              ALWAYS LEARNING. ALWAYS EXPERIMENTING.
+            </p>
+          </div>
+        )}
+
+        {activeSection === "Contact" && (
+          <div className="contact-layout">
+            <div className="contact-main">
+              <p className="eyebrow">
+                <span className="status-dot" />
+                LET’S CONNECT
+              </p>
+
+              <h1 id="hero-title" className="contact-title">
+                Have an idea?
+                <br />
+                <span>Let’s talk.</span>
+              </h1>
+
+              <p className="contact-description">
+                Whether you have an interesting project, an opportunity,
+                or simply want to exchange ideas about technology and AI,
+                I’d love to hear from you.
+              </p>
+
+              <a
+                className="contact-button"
+                href="mailto:your.email@example.com"
+              >
+                Get in touch
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div className="contact-details">
+              <div className="contact-detail">
+                <span className="contact-label">EMAIL</span>
+                <span className="contact-value">
+                  nirikalamichhane12@gmail.com
+                </span>
+              </div>
+
+              <div className="contact-detail">
+                <span className="contact-label">BASED IN</span>
+                <span className="contact-value">
+                  Kathmandu, Nepal
+                </span>
+              </div>
+
+              <div className="contact-detail">
+                <span className="contact-label">OPEN TO</span>
+                <span className="contact-value">
+                  Internships · Projects · Collaboration
+                </span>
+              </div>
+
+              <div className="contact-detail">
+                <span className="contact-label">SOCIAL LINKS</span>
+                <div className="contact-socials">
+                  <a href="https://www.linkedin.com/in/nirika-lamichhane/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+                  <a href="https://github.com/Nirika-Lamichhane" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  <a href="https://medium.com/@nirikalamichhane12" target="_blank" rel="noopener noreferrer">Medium ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <p className="contact-footer">
+              GOOD THINGS START WITH A CONVERSATION.
+            </p>
+          </div>
+        )}
       </section>
-
-      
-{activeSection === "Experience" && (
-  <div className="experience-layout">
-    <div className="experience-heading">
-      <p className="eyebrow">
-        <span className="status-dot" />
-        MY PROFESSIONAL JOURNEY
-      </p>
-
-      <h1 id="hero-title" className="experience-title">
-        Experience &
-        <br />
-        <span>growth.</span>
-      </h1>
-
-      <p className="experience-intro">
-        A record of the roles, collaborations, and opportunities
-        that have shaped my journey in technology.
-      </p>
-    </div>
-
-    <div className="experience-list">
-      <article className="experience-item">
-        <div className="experience-marker">
-          <span />
-        </div>
-
-        <div className="experience-meta">
-          <span>EXPERIENCE 01</span>
-          <span>DATE TBD</span>
-        </div>
-
-        <div className="experience-content">
-          <p className="experience-type">ROLE / PLACEHOLDER</p>
-          <h2>Your First Role</h2>
-          <p className="experience-company">
-            Organization or Company Name
-          </p>
-          <p className="experience-description">
-            Add a brief summary of your responsibilities,
-            the work you contributed to, and what you learned.
-          </p>
-          <div className="experience-tags">
-            <span>Collaboration</span>
-            <span>Problem-solving</span>
-          </div>
-        </div>
-      </article>
-
-      <article className="experience-item">
-        <div className="experience-marker">
-          <span />
-        </div>
-
-        <div className="experience-meta">
-          <span>EXPERIENCE 02</span>
-          <span>DATE TBD</span>
-        </div>
-
-        <div className="experience-content">
-          <p className="experience-type">ROLE / PLACEHOLDER</p>
-          <h2>Your Second Role</h2>
-          <p className="experience-company">
-            Organization, Internship, or Team
-          </p>
-          <p className="experience-description">
-            Describe another relevant role, internship, team
-            contribution, or professional experience here.
-          </p>
-          <div className="experience-tags">
-            <span>Technology</span>
-            <span>Learning</span>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <p className="experience-footer">
-      EVERY EXPERIENCE IS AN OPPORTUNITY TO GROW.
-    </p>
-  </div>
-)}
-
-{activeSection === "Skills" && (
-  <div className="skills-layout">
-    <div className="skills-heading">
-      <p className="eyebrow">
-        <span className="status-dot" />
-        MY TOOLKIT
-      </p>
-
-      <h1 id="hero-title" className="skills-title">
-        Skills &
-        <br />
-        <span>curiosity.</span>
-      </h1>
-
-      <p className="skills-intro">
-        The tools, concepts, and technical areas I’m exploring
-        as I grow as an engineer and developer.
-      </p>
-    </div>
-
-    <div className="skills-grid">
-      <article className="skill-card">
-        <span className="skill-number">01</span>
-        <h2>Programming</h2>
-        <p>Languages and foundations</p>
-        <div className="skill-tags">
-          <span>Language 01</span>
-          <span>Language 02</span>
-          <span>Language 03</span>
-        </div>
-      </article>
-
-      <article className="skill-card">
-        <span className="skill-number">02</span>
-        <h2>AI & Machine Learning</h2>
-        <p>Intelligent systems and experimentation</p>
-        <div className="skill-tags">
-          <span>Topic 01</span>
-          <span>Topic 02</span>
-          <span>Topic 03</span>
-        </div>
-      </article>
-
-      <article className="skill-card">
-        <span className="skill-number">03</span>
-        <h2>Web Development</h2>
-        <p>Building interactive digital experiences</p>
-        <div className="skill-tags">
-          <span>Technology 01</span>
-          <span>Technology 02</span>
-          <span>Technology 03</span>
-        </div>
-      </article>
-
-      <article className="skill-card">
-        <span className="skill-number">04</span>
-        <h2>Tools & Workflow</h2>
-        <p>Tools for building and collaboration</p>
-        <div className="skill-tags">
-          <span>Tool 01</span>
-          <span>Tool 02</span>
-          <span>Tool 03</span>
-        </div>
-      </article>
-    </div>
-
-    <p className="skills-note">
-      ALWAYS LEARNING. ALWAYS EXPERIMENTING.
-    </p>
-  </div>
-)}
-
-{activeSection === "Contact" && (
-  <div className="contact-layout">
-    <div className="contact-main">
-      <p className="eyebrow">
-        <span className="status-dot" />
-        LET’S CONNECT
-      </p>
-
-      <h1 id="hero-title" className="contact-title">
-        Have an idea?
-        <br />
-        <span>Let’s talk.</span>
-      </h1>
-
-      <p className="contact-description">
-        Whether you have an interesting project, an opportunity,
-        or simply want to exchange ideas about technology and AI,
-        I’d love to hear from you.
-      </p>
-
-      <a
-        className="contact-button"
-        href="mailto:your.email@example.com"
-      >
-        Get in touch
-        <span aria-hidden="true">↗</span>
-      </a>
-    </div>
-
-    <div className="contact-details">
-      <div className="contact-detail">
-        <span className="contact-label">EMAIL</span>
-        <span className="contact-value">
-          your.email@example.com
-        </span>
-      </div>
-
-      <div className="contact-detail">
-        <span className="contact-label">BASED IN</span>
-        <span className="contact-value">
-          Nepal
-        </span>
-      </div>
-
-      <div className="contact-detail">
-        <span className="contact-label">OPEN TO</span>
-        <span className="contact-value">
-          Internships · Projects · Collaboration
-        </span>
-      </div>
-
-      <div className="contact-detail">
-        <span className="contact-label">SOCIAL LINKS</span>
-        <div className="contact-socials">
-          <span>LinkedIn — add your link</span>
-          <span>GitHub — add your link</span>
-        </div>
-      </div>
-    </div>
-
-    <p className="contact-footer">
-      GOOD THINGS START WITH A CONVERSATION.
-    </p>
-  </div>
-)}
-
 
       {activeSection !== "Home" ? (
         <footer className="bottom-bar">
@@ -508,7 +523,17 @@ export default function App() {
       ) : (
         <footer className="bottom-bar">
           <span>PERSONAL PORTFOLIO</span>
-          <span>DESIGNED WITH INTENTION ↗</span>
+          <div className="footer-links" style={{ display: 'flex', gap: '1.5rem' }}>
+            <a href="https://github.com/Nirika-Lamichhane" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+              GITHUB ↗
+            </a>
+            <a href="https://www.linkedin.com/in/nirika-lamichhane/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+              LINKEDIN ↗
+            </a>
+            <a href="https://medium.com/@nirikalamichhane12" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+              MEDIUM ↗
+            </a>
+          </div>
         </footer>
       )}
     </main>

@@ -1,24 +1,41 @@
-
-#root {
-  min-height: 100vh;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Removes the outer browser scrollbar */
 }
-
 
 .home {
   --pointer-x: 50%;
   --pointer-y: 40%;
-
+  
+  box-sizing: border-box;
   position: relative;
   isolation: isolate;
   display: flex;
-  min-height: 100vh;
-  min-height: 100svh;
+  height: 100svh; /* Locks container to exact screen height */
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: hidden; /* Removes the inner container scrollbar */
   padding: clamp(22px, 4vw, 52px);
   background: #e8dfd0;
-  color: #302e28;
+  color: #111111;
+}
+
+/* Update your existing .hero class to flexibly fill the middle space */
+.hero {
+  position: relative;
+  z-index: 1;
+  flex: 1; /* Forces the hero to take up only the available middle space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers your portrait and text vertically */
+  padding-block: 2rem; /* Adds breathing room so it doesn't crush into the header/footer */
+}
+
+.hero-name {
+  font-size: clamp(2rem, 5vw, 4rem); /* Adjust these numbers smaller if needed */
+  margin-block: 1rem;
 }
 
 .home::before {
@@ -77,16 +94,6 @@
   margin: 0;
 }
 
-.hero {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 0;
-  text-align: center;
-}
-
 .eyebrow {
   display: flex;
   align-items: center;
@@ -114,31 +121,29 @@
   border-radius: 50%;
   background: #c7bda9;
   box-shadow: 0 12px 36px rgba(70, 57, 42, 0.12);
-
-  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
 }
 
 .portrait-frame:hover {
   box-shadow: 0 20px 50px rgba(70, 57, 42, 0.25);
   transform: translateY(-8px);
+  border-color: #e6b8b8;
 }
 
 .portrait-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 90; 
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
+  object-position: center 90%; 
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   
-  filter: saturate(0.85);
+  /* Image is now fully saturated and bright by default */
+  filter: saturate(1.1) brightness(1.05);
 }
 
 .portrait-frame:hover .portrait-image {
-  /* Zooms in AND tilts slightly */
+  /* Keeps the zoom and tilt animation on hover */
   transform: scale(1.12) rotate(3deg); 
-  
-  /* Brings full color and slight brightness back */
-  filter: saturate(1.1) brightness(1.05); 
 }
 
 
@@ -305,6 +310,92 @@
   }
 }
 
+/* Make the button a solid dark color to match your typography */
+.contact-button {
+  background-color: #f9eeee;
+  color: #0e0e0e; /* Uses your background color for the text */
+  border: 1px solid #111111;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add a subtle lift and fade on hover */
+.contact-button:hover {
+  background-color: #e6b8b8; 
+  border-color: #333333;
+  color: #121212;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Move the bottom footer up */
+.bottom-bar {
+  margin-bottom: 3vh; /* Adjust this value to push it higher or lower */
+  position: relative;
+  z-index: 10;
+}
+
+/* Floating Tech Stack Container */
+.floating-tech-stack {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45vw; /* Detects the mouse on the right side of the screen */
+  height: 100vh;
+  z-index: 0; /* Stays behind your top navigation */
+}
+
+/* Group Hover: When you move to the right side, all icons become more visible */
+.floating-tech-stack:hover .tech-icon {
+  opacity: 0.4;
+}
+
+/* Base Icon Styles */
+.tech-icon {
+  position: absolute;
+  opacity: 0.8; /* Barely visible by default */
+  filter: grayscale(100%);
+  transition: all 0.4s ease; /* Smooth transition for hover effects */
+  animation: float 12s ease-in-out infinite;
+  cursor: pointer;
+}
+
+/* Individual Hover: When you touch a specific icon, it pops in full color */
+.tech-icon:hover {
+  opacity: 1 !important;
+  filter: grayscale(0%) drop-shadow(0 10px 20px rgba(0,0,0,0.15)) !important;
+  transform: scale(1.2) !important;
+  animation-play-state: paused; /* Stops floating while you look at it */
+  z-index: 10;
+}
+
+/* Clustered Positions (Moved higher up) */
+.tech-icon.py { top: 20%; right: 40%; animation-delay: 0s; width: 80px; }
+.tech-icon.ke { top: 25%; right: 20%; animation-delay: -8s; width: 75px; }
+.tech-icon.pt { top: 32%; right: 65%; animation-delay: -3s; width: 70px; }
+.tech-icon.re { top: 40%; right: 35%; animation-delay: -6s; width: 90px; }
+.tech-icon.tf { top: 52%; right: 55%; animation-delay: -4s; width: 65px; }
+
+/* The Drift Animation */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(5deg); }
+  66% { transform: translateY(15px) rotate(-5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Hide on mobile devices */
+@media (max-width: 768px) {
+  .floating-tech-stack {
+    display: none;
+  }
+}
 
 
 /* About section */
@@ -1015,31 +1106,8 @@
   line-height: 1.9;
 }
 
-.contact-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 34px;
-  padding: 14px 18px;
-  border: 1px solid #514e42;
-  border-radius: 3px;
-  background: #514e42;
-  color: #f5efe4;
-  font-size: 0.8rem;
-  text-decoration: none;
-  transition:
-    background 200ms ease,
-    color 200ms ease,
-    transform 200ms ease;
-}
-
 .contact-button span {
   font-size: 1rem;
-}
-
-.contact-button:hover {
-  transform: translateY(-2px);
-  background: transparent;
-  color: #514e42;
 }
 
 .contact-details {
