@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const sections = ["Home", "About", "Projects", "Experience", "Skills", "Contact"];
+const sections = ["Home", "About", "Projects", "Experience", "Contact"];
 
 function getSectionFromUrl() {
   const section = window.location.hash.slice(1);
@@ -105,17 +105,17 @@ export default function App() {
               Machine Learning · NLP · Full-Stack Development
             </p>
             
-            <div className="hero-actions" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
-              <button 
-                className="contact-button" 
-                onClick={() => navigateTo("Projects")}
-                style={{ cursor: 'pointer' }}
-              >
-                See My Work
-                <span aria-hidden="true" style={{ marginLeft: '8px' }}>↗</span>
+            {/* Action Buttons */}
+            <div className="hero-cta-group">
+              <button onClick={() => setActiveSection("Projects")} className="hero-btn-outline">
+                See My Work ↗
+              </button>
+              <button onClick={() => setActiveSection("Contact")} className="hero-btn-outline">
+                Let's Talk ↗
               </button>
             </div>
 
+            
            <div className="floating-tech-stack" aria-hidden="true">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="tech-icon py" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" alt="PyTorch" className="tech-icon pt" />
@@ -422,142 +422,56 @@ export default function App() {
         )}
 
 
-        {activeSection === "Skills" && (
-          <div className="skills-layout">
-            <div className="skills-heading">
-              <p className="eyebrow">
-                <span className="status-dot" />
-                MY TOOLKIT
-              </p>
-
-              <h1 id="hero-title" className="skills-title">
-                Skills &
-                <br />
-                <span>curiosity.</span>
-              </h1>
-
-              <p className="skills-intro">
-                The tools, concepts, and technical areas I’m exploring
-                as I grow as an engineer and developer.
-              </p>
-            </div>
-
-            <div className="skills-grid">
-              <article className="skill-card">
-                <span className="skill-number">01</span>
-                <h2>Programming</h2>
-                <p>Languages and foundations</p>
-                <div className="skill-tags">
-                  <span>Language 01</span>
-                  <span>Language 02</span>
-                  <span>Language 03</span>
+       {activeSection === "Contact" && (
+          <div className="contact-layout fun-contact">
+            <div className="contact-container">
+              
+              {/* Left Side: Friendly Greeting */}
+              <div className="contact-greeting">
+                <div className="availability-badge">
+                  <span className="pulsing-dot"></span>
+                  Open for collaborations
                 </div>
-              </article>
-
-              <article className="skill-card">
-                <span className="skill-number">02</span>
-                <h2>AI & Machine Learning</h2>
-                <p>Intelligent systems and experimentation</p>
-                <div className="skill-tags">
-                  <span>Topic 01</span>
-                  <span>Topic 02</span>
-                  <span>Topic 03</span>
-                </div>
-              </article>
-
-              <article className="skill-card">
-                <span className="skill-number">03</span>
-                <h2>Web Development</h2>
-                <p>Building interactive digital experiences</p>
-                <div className="skill-tags">
-                  <span>Technology 01</span>
-                  <span>Technology 02</span>
-                  <span>Technology 03</span>
-                </div>
-              </article>
-
-              <article className="skill-card">
-                <span className="skill-number">04</span>
-                <h2>Tools & Workflow</h2>
-                <p>Tools for building and collaboration</p>
-                <div className="skill-tags">
-                  <span>Tool 01</span>
-                  <span>Tool 02</span>
-                  <span>Tool 03</span>
-                </div>
-              </article>
-            </div>
-
-            <p className="skills-note">
-              ALWAYS LEARNING. ALWAYS EXPERIMENTING.
-            </p>
-          </div>
-        )}
-
-        {activeSection === "Contact" && (
-          <div className="contact-layout">
-            <div className="contact-main">
-              <p className="eyebrow">
-                <span className="status-dot" />
-                LET’S CONNECT
-              </p>
-
-              <h1 id="hero-title" className="contact-title">
-                Have an idea?
-                <br />
-                <span>Let’s talk.</span>
-              </h1>
-
-              <p className="contact-description">
-                Whether you have an interesting project, an opportunity,
-                or simply want to exchange ideas about technology and AI,
-                I’d love to hear from you.
-              </p>
-
-              <a
-                className="contact-button"
-                href="mailto:your.email@example.com"
-              >
-                Get in touch
-                <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-
-            <div className="contact-details">
-              <div className="contact-detail">
-                <span className="contact-label">EMAIL</span>
-                <span className="contact-value">
-                  nirikalamichhane12@gmail.com
-                </span>
+                <h1 className="contact-title">
+                  Let's grab a <br />
+                  <span>virtual coffee.</span>
+                </h1>
+                <p className="contact-description">
+                  I'm always excited to talk about machine learning, new projects, or tech communities. Pick your preferred way to reach out!
+                </p>
               </div>
 
-              <div className="contact-detail">
-                <span className="contact-label">BASED IN</span>
-                <span className="contact-value">
-                  Kathmandu, Nepal
-                </span>
-              </div>
-
-              <div className="contact-detail">
-                <span className="contact-label">OPEN TO</span>
-                <span className="contact-value">
-                  Internships · Projects · Collaboration
-                </span>
-              </div>
-
-              <div className="contact-detail">
-                <span className="contact-label">SOCIAL LINKS</span>
-                <div className="contact-socials">
-                  <a href="https://www.linkedin.com/in/nirika-lamichhane/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-                  <a href="https://github.com/Nirika-Lamichhane" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-                  <a href="https://medium.com/@nirikalamichhane12" target="_blank" rel="noopener noreferrer">Medium ↗</a>
+              {/* Right Side: Interactive Contact Cards */}
+              <div className="contact-options">
+                
+                {/* Email Card */}
+                <div className="contact-method-card">
+                  <div className="method-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  </div>
+                  <div className="method-details">
+                    <h3>Drop me an email</h3>
+                    {/* The email is clearly visible so it can be copied if the link fails */}
+                    <p>nirikalamichhane12@gmail.com</p>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nirikalamichhane12@gmail.com" target="_blank" rel="noopener noreferrer" className="method-action">Send Message ↗</a>
+                  </div>
                 </div>
+
+                {/* Phone Card */}
+                <div className="contact-method-card">
+                  <div className="method-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  </div>
+                  <div className="method-details">
+                    <h3>Give me a ring</h3>
+                    <p>+977 9849716399</p>
+                    {/* The tel: link allows mobile users to tap and call instantly */}
+                    <a href="https://wa.me/9779849716399" target="_blank" rel="noopener noreferrer" className="method-action">Message on WhatsApp ↗</a>
+                  </div>
+                </div>
+
               </div>
             </div>
-
-            <p className="contact-footer">
-              GOOD THINGS START WITH A CONVERSATION.
-            </p>
           </div>
         )}
       </section>
