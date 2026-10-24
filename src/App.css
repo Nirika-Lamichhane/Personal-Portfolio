@@ -376,7 +376,7 @@ html, body {
 
 /* Add a subtle lift and fade on hover */
 .contact-button:hover {
-  background-color: #e6b8b8; 
+  background-color: #c2cac5; 
   border-color: #333333;
   color: #121212;
   transform: translateY(-2px);
@@ -557,66 +557,156 @@ html, body {
     margin-top: 20px;
   }
 }
+/* =========================================
+   PROJECTS SECTION - COMPLETE STYLES
+   ========================================= */
 
-/* Projects Header Alignment */
+.projects-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding-block: 0; 
+  padding-top: 1rem;
+}
+
+/* Header & Title Alignment */
 .projects-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-end; /* Aligns the subtitle text nicely with the bottom of the main title */
-  margin-bottom: 4rem;
+  align-items: flex-end; 
+  margin-bottom: 3.5rem;
   gap: 2rem;
+}
+
+.projects-title-block {
+  flex: 1;
 }
 
 .projects-title {
   margin: 0;
   line-height: 1.1;
+  font-size: clamp(3rem, 5vw, 4.5rem);
 }
 
 .projects-title span {
-  color: #2a5038; /* Matches the Forest Green from your About section */
+  color: #2a5038; 
 }
 
-.projects-subtitle {
-  max-width: 320px;
-  color: #333333;
-  margin-bottom: 0.5rem; /* Slight tweak to visually balance the bottom alignment */
+.projects-header-action {
+  margin-bottom: 0.8rem; 
 }
 
-/* Projects Grid Setup */
+/* Strict 2-Column Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Forces exactly 2 columns */
-  gap: 2.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
   margin-bottom: 4rem;
+  align-items: stretch;
 }
 
-/* Reusing the tag styles from the About page to keep things consistent */
-.project-tags {
-  margin-top: 1.5rem;
-}
-
-/* Resume Button Container */
-.resume-section {
+/* Card Container */
+.project-card {
   display: flex;
-  justify-content: center;
-  padding-top: 1rem;
-  padding-bottom: 3rem;
+  flex-direction: column;
+  background-color: #dfd7c6;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Responsive adjustments for mobile screens */
-@media (max-width: 768px) {
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Text Content Area */
+.project-info {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-category {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #666666;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+/* Title and GitHub Button Alignment */
+.project-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.project-title-row h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #111111;
+  font-family: serif;
+  line-height: 1.2;
+}
+
+.project-link {
+  text-decoration: none;
+  color: #111111;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #111111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.project-link:hover {
+  background-color: #2a5038;
+  border-color: #2a5038;
+  color: #e8dfd0;
+  transform: translate(2px, -2px);
+}
+
+/* Spacing for Description and Tags */
+.project-description {
+  color: #333333;
+  line-height: 1.7;
+  margin-bottom: auto; /* Pushes tags to the absolute bottom */
+}
+
+.project-tags {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
   .projects-grid {
-    grid-template-columns: 1fr; /* Stacks the cards in a single column on phones */
+    grid-template-columns: 1fr;
   }
   .projects-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  .projects-subtitle {
-    max-width: 100%;
+  .projects-header-action {
+    margin-bottom: 0;
+    margin-top: 1rem;
   }
 }
+
 /* Experience section */
 .experience-layout {
   width: min(100%, 1000px);
