@@ -127,7 +127,7 @@ export default function App() {
           </>
         )}
 
-        {activeSection === "About" && (
+       {activeSection === "About" && (
           <div className="about-layout">
             <div className="about-heading">
               <p className="eyebrow">
@@ -151,27 +151,26 @@ export default function App() {
 
             <div className="about-details">
               <p>
-                I'm studying Computer Engineering at IOE Thapathali Campus,
-                with a strong interest in artificial intelligence and its
-                potential to solve real-world problems.
+                I'm a final-year Computer Engineering student at IOE Thapathali Campus, 
+                deeply interested in machine learning, natural language processing, 
+                and building scalable full-stack applications.
               </p>
 
               <p>
-                I enjoy exploring new technologies, experimenting with ideas,
-                and learning by building. For me, the most exciting part of
-                technology is turning curiosity into something useful.
+                Whether I'm developing recommendation engines, experimenting with deep 
+                learning architectures, or sharing knowledge through my medium blogs, I love turning complex problems into intuitive solutions.
               </p>
 
               <p>
-                I'm open to opportunities where I can learn, contribute,
-                collaborate, and grow — from internships and full-time roles
-                to freelance projects and building products of my own.
+                I'm always looking for opportunities to collaborate, learn, and engineer 
+                purpose-driven technology.
               </p>
 
               <div className="about-tags" aria-label="Areas of interest">
-                <span>Computer Engineering</span>
-                <span>Artificial Intelligence</span>
-                <span>Building &amp; Experimenting</span>
+                <span>Machine Learning</span>
+                <span>NLP</span>
+                <span>Full-Stack ML Development</span>
+                <span>Learning and Sharing</span>
               </div>
             </div>
           </div>
@@ -179,114 +178,77 @@ export default function App() {
 
         {activeSection === "Projects" && (
           <div className="projects-layout">
-            <div className="projects-heading">
-              <div>
+            <div className="projects-header">
+              <div className="projects-title-block">
                 <p className="eyebrow">
                   <span className="status-dot" />
                   SELECTED WORK
                 </p>
-
-                <h1 id="hero-title" className="projects-title">
-                  Things I've
-                  <br />
+                <h1 className="projects-title">
+                  Things I've <br />
                   <span>been building.</span>
                 </h1>
               </div>
-
-              <p className="projects-intro">
-                A selection of projects, experiments, and ideas
-                brought to life through code.
+              <p className="projects-subtitle">
+                A selection of machine learning models, full-stack applications, and ideas brought to life through code.
               </p>
             </div>
 
-            <div className="featured-grid">
-              <article className="project-card">
-                <div className="project-visual project-visual-one">
-                  <span className="project-number">PROJECT 01</span>
-
-                  <div className="project-art project-art-one">
-                    <span>01</span>
-                  </div>
-
-                  <span className="project-visual-label">
-                    FEATURED PROJECT
-                  </span>
+            <div className="projects-grid">
+              {/* Project 1 */}
+              <div className="project-card">
+                <div className="project-image placeholder-1">
+                  <span className="project-number">01</span>
                 </div>
-
                 <div className="project-info">
+                  <p className="project-category">NLP / DEEP LEARNING</p>
                   <div className="project-title-row">
-                    <div>
-                      <p className="project-category">AI / PLACEHOLDER</p>
-                      <h2>Project One</h2>
-                    </div>
-
-                    <span className="project-arrow" aria-hidden="true">
-                      ↗
-                    </span>
+                    <h2>Nepali Sentiment Analysis</h2>
+                    <a href="https://github.com/Nirika-Lamichhane" target="_blank" rel="noopener noreferrer" className="project-link">↗</a>
                   </div>
-
                   <p className="project-description">
-                    A short introduction to your first featured project will
-                    go here. We'll add the problem, your solution, and what
-                    makes the project interesting.
+                    A multi-task hybrid CNN and BiLSTM architecture utilizing FastText embeddings to perform aspect-based sentiment analysis on Nepali YouTube comments.
                   </p>
-
-                  <div className="project-tags">
-                    <span>Technology</span>
-                    <span>Research</span>
-                    <span>Development</span>
+                  <div className="about-tags project-tags">
+                    <span>PyTorch</span>
+                    <span>BiLSTM</span>
+                    <span>CNN</span>
                   </div>
                 </div>
-              </article>
+              </div>
 
-              <article className="project-card">
-                <div className="project-visual project-visual-two">
-                  <span className="project-number">PROJECT 02</span>
-
-                  <div className="project-art project-art-two">
-                    <span>02</span>
-                  </div>
-
-                  <span className="project-visual-label">
-                    FEATURED PROJECT
-                  </span>
+              {/* Project 2 */}
+              <div className="project-card">
+                <div className="project-image placeholder-2">
+                  <span className="project-number">02</span>
                 </div>
-
                 <div className="project-info">
+                  <p className="project-category">FULL-STACK / ML</p>
                   <div className="project-title-row">
-                    <div>
-                      <p className="project-category">
-                        EXPERIMENT / PLACEHOLDER
-                      </p>
-                      <h2>Project Two</h2>
-                    </div>
-
-                    <span className="project-arrow" aria-hidden="true">
-                      ↗
-                    </span>
+                    <h2>Daraz Product Identification</h2>
+                    <a href="https://github.com/Nirika-Lamichhane" target="_blank" rel="noopener noreferrer" className="project-link">↗</a>
                   </div>
-
                   <p className="project-description">
-                    Your second project will be introduced here, with room
-                    to explain its purpose, the tools you used, and the
-                    outcome you achieved.
+                    An e-commerce product matching pipeline with named reviewer access control, integrated with a Next.js frontend to identify identical items across listings.
                   </p>
-
-                  <div className="project-tags">
-                    <span>Design</span>
-                    <span>Engineering</span>
-                    <span>Experiment</span>
+                  <div className="about-tags project-tags">
+                    <span>Next.js</span>
+                    <span>Machine Learning</span>
+                    <span>Python</span>
                   </div>
                 </div>
-              </article>
+              </div>
             </div>
 
-            <p className="projects-note">
-              TWO PROJECTS · MORE DETAILS COMING SOON
-            </p>
+            {/* Resume Button Section */}
+            <div className="resume-section">
+              {/* Replace the href with the actual path to your PDF resume (e.g., /resume.pdf) */}
+              <a href="#" target="_blank" rel="noopener noreferrer" className="contact-button">
+                View Full Resume ↗
+              </a>
+            </div>
           </div>
         )}
-
         {activeSection === "Experience" && (
           <div className="experience-layout">
             <div className="experience-heading">

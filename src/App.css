@@ -1,8 +1,14 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden; /* Removes the outer browser scrollbar */
+  overflow-x: hidden; /* Prevents horizontal scrolling, allows normal vertical scrolling */
+  background: #e8dfd0; /* Keeps the background color consistent if you scroll too far */
+}
+
+#root {
+  min-height: 100vh; /* Sets the minimum height to the screen */
+  display: flex;
+  flex-direction: column;
 }
 
 .home {
@@ -13,25 +19,43 @@ html, body {
   position: relative;
   isolation: isolate;
   display: flex;
-  height: 100svh; /* Locks container to exact screen height */
+  flex: 1;
+  min-height: 100svh; /* Allows the page to stretch taller than the screen if needed */
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden; /* Removes the inner container scrollbar */
   padding: clamp(22px, 4vw, 52px);
   background: #e8dfd0;
   color: #111111;
 }
 
-/* Update your existing .hero class to flexibly fill the middle space */
+/* Let the middle section grow naturally */
 .hero {
   position: relative;
   z-index: 1;
-  flex: 1; /* Forces the hero to take up only the available middle space */
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers your portrait and text vertically */
-  padding-block: 2rem; /* Adds breathing room so it doesn't crush into the header/footer */
+  justify-content: center;
+  overflow: visible;
+  padding-block: 2rem;
 }
+
+/* Remove the inner scrolling hacks from the layout wrappers */
+.about-layout, 
+.projects-layout, 
+.experience-layout, 
+.skills-layout, 
+.contact-layout {
+  max-height: none;
+  overflow-y: visible; 
+  padding-right: 0; 
+}
+
+/* 3. Remove the margin hacks from the previous step if you added them */
+.portrait-frame {
+  margin-top: 0;
+}
+
 
 .hero-name {
   font-size: clamp(2rem, 5vw, 4rem); /* Adjust these numbers smaller if needed */
@@ -56,6 +80,7 @@ html, body {
 .topbar,
 .hero,
 .bottom-bar {
+  transform: translateY(-3vh);
   position: relative;
   z-index: 1;
 }
@@ -366,13 +391,16 @@ html, body {
 }
 
 /* Floating Tech Stack Container */
+/* Floating Tech Stack Container */
 .floating-tech-stack {
   position: absolute;
   top: 0;
   right: 0;
-  width: 45vw; /* Detects the mouse on the right side of the screen */
-  height: 100vh;
-  z-index: 0; /* Stays behind your top navigation */
+  bottom: 0; /* Attaches to the bottom instead of forcing 100vh */
+  width: 45vw;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden; /* CRITICAL: Stops drifting icons from triggering a scrollbar */
 }
 
 /* Group Hover: When you move to the right side, all icons become more visible */
@@ -452,42 +480,49 @@ html, body {
   line-height: 1.1;
 }
 
+/* Make the highlighted heading text pop with your pink accent */
 .about-title span {
-  color: #848f66;
+  color: #e91e63; 
 }
 
+/* Darken the subtitle for better contrast */
 .about-subtitle {
-  max-width: 410px;
-  margin-top: 24px;
-  color: #6f7067;
-  font-size: 1rem;
-  line-height: 1.8;
+  color: #333333;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-.about-details {
-  color: #514e42;
-  font-size: 0.96rem;
-  line-height: 1.9;
-}
-
+/* Darken paragraph text and increase line-height for readability */
 .about-details p {
-  margin: 0 0 20px;
+  color: #111111;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
 }
 
+/* Style the tags to look sharp and interactive */
 .about-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 28px;
+  gap: 0.8rem;
+  margin-top: 2rem;
 }
 
 .about-tags span {
-  padding: 9px 12px;
-  border: 1px solid rgba(81, 78, 66, 0.22);
-  border-radius: 999px;
-  color: #514e42;
-  font-size: 0.72rem;
-  line-height: 1.4;
+  border: 1px solid #111111;
+  color: #111111;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.about-tags span:hover {
+  background-color: #111111;
+  color: #e8dfd0;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 760px) {
@@ -523,237 +558,65 @@ html, body {
   }
 }
 
-
-/* Featured projects */
-.projects-layout {
-  width: min(100%, 1180px);
-  margin: auto;
-  padding: 28px 0;
-}
-
-.projects-heading {
+/* Projects Header Alignment */
+.projects-header {
   display: flex;
-  align-items: end;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 28px;
-  margin-bottom: 32px;
-}
-
-.projects-heading .eyebrow {
-  margin-bottom: 18px;
+  align-items: flex-end; /* Aligns the subtitle text nicely with the bottom of the main title */
+  margin-bottom: 4rem;
+  gap: 2rem;
 }
 
 .projects-title {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.8rem, 5.5vw, 5rem);
-  font-weight: 400;
-  letter-spacing: -0.065em;
-  line-height: 1.02;
+  line-height: 1.1;
 }
 
 .projects-title span {
-  color: #848f66;
+  color: #2a5038; /* Matches the Forest Green from your About section */
 }
 
-.projects-intro {
-  max-width: 300px;
-  margin: 0 0 6px;
-  color: #6f7067;
-  font-size: 0.9rem;
-  line-height: 1.8;
+.projects-subtitle {
+  max-width: 320px;
+  color: #333333;
+  margin-bottom: 0.5rem; /* Slight tweak to visually balance the bottom alignment */
 }
 
-.featured-grid {
+/* Projects Grid Setup */
+.projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr 1fr; /* Forces exactly 2 columns */
+  gap: 2.5rem;
+  margin-bottom: 4rem;
 }
 
-.project-card {
-  min-width: 0;
-  overflow: hidden;
-  border: 1px solid rgba(81, 78, 66, 0.12);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.23);
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(81, 78, 66, 0.3);
-}
-
-.project-visual {
-  position: relative;
-  display: flex;
-  min-height: 175px;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.project-visual-one {
-  background: #d8d4c4;
-}
-
-.project-visual-two {
-  background: #d9cbc5;
-}
-
-.project-number,
-.project-visual-label {
-  position: absolute;
-  z-index: 1;
-  color: rgba(48, 46, 40, 0.7);
-  font-size: 0.58rem;
-  letter-spacing: 0.13em;
-}
-
-.project-number {
-  top: 16px;
-  left: 17px;
-}
-
-.project-visual-label {
-  right: 17px;
-  bottom: 15px;
-}
-
-.project-art {
-  display: grid;
-  width: 100px;
-  height: 100px;
-  place-items: center;
-  border: 1px solid rgba(48, 46, 40, 0.25);
-  border-radius: 50%;
-  color: #514e42;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 2.8rem;
-  transition: transform 250ms ease;
-}
-
-.project-art-one {
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.project-art-two {
-  border-radius: 45% 45% 12px 12px;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.project-card:hover .project-art {
-  transform: scale(1.06) rotate(-3deg);
-}
-
-.project-info {
-  padding: 20px;
-}
-
-.project-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.project-category {
-  margin: 0 0 7px;
-  color: #77776e;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-}
-
-.project-title-row h2 {
-  margin: 0;
-  color: #302e28;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.45rem, 2.5vw, 2rem);
-  font-weight: 400;
-  letter-spacing: -0.035em;
-}
-
-.project-arrow {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  place-items: center;
-  border: 1px solid rgba(81, 78, 66, 0.2);
-  border-radius: 50%;
-  color: #514e42;
-}
-
-.project-description {
-  margin: 14px 0 18px;
-  color: #6f7067;
-  font-size: 0.82rem;
-  line-height: 1.8;
-}
-
+/* Reusing the tag styles from the About page to keep things consistent */
 .project-tags {
+  margin-top: 1.5rem;
+}
+
+/* Resume Button Container */
+.resume-section {
   display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
 }
 
-.project-tags span {
-  padding: 6px 9px;
-  border: 1px solid rgba(81, 78, 66, 0.18);
-  border-radius: 999px;
-  color: #514e42;
-  font-size: 0.65rem;
-}
-
-.projects-note {
-  margin: 22px 0 0;
-  color: #77776e;
-  font-size: 0.58rem;
-  letter-spacing: 0.13em;
-  text-align: right;
-}
-
-@media (max-width: 760px) {
-  .projects-heading {
-    align-items: flex-start;
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* Stacks the cards in a single column on phones */
+  }
+  .projects-header {
     flex-direction: column;
-    gap: 14px;
-    margin-bottom: 24px;
+    align-items: flex-start;
   }
-
-  .projects-intro {
-    max-width: 420px;
-  }
-
-  .featured-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .project-visual {
-    min-height: 160px;
-  }
-
-  .projects-layout {
-    padding: 20px 0;
+  .projects-subtitle {
+    max-width: 100%;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .project-card,
-  .project-art {
-    transition: none;
-  }
-
-  .project-card:hover,
-  .project-card:hover .project-art {
-    transform: none;
-  }
-}
-
-
 /* Experience section */
 .experience-layout {
   width: min(100%, 1000px);
