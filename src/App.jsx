@@ -254,6 +254,9 @@ export default function App() {
           </div>
         )}
 
+
+
+
         {activeSection === "Experience" && (
           <div className="experience-layout">
             <div className="experience-heading">
@@ -275,56 +278,138 @@ export default function App() {
             </div>
 
             <div className="experience-list">
+              {/* Experience 1: Internship */}
               <article className="experience-item">
-                <div className="experience-marker">
-                  <span />
-                </div>
-
+                <div className="experience-marker"><span /></div>
                 <div className="experience-meta">
                   <span>EXPERIENCE 01</span>
-                  <span>DATE TBD</span>
+                  <span>MAY 2026</span>
                 </div>
-
                 <div className="experience-content">
-                  <p className="experience-type">ROLE / PLACEHOLDER</p>
-                  <h2>Your First Role</h2>
-                  <p className="experience-company">
-                    Organization or Company Name
-                  </p>
+                  <p className="experience-type">INTERNSHIP</p>
+                  <h2>Backend Developer Intern</h2>
+                  <p className="experience-company">Akin Pte Ltd (Remote)</p>
                   <p className="experience-description">
-                    Add a brief summary of your responsibilities,
-                    the work you contributed to, and what you learned.
+                    Worked remotely as a backend developer, assisting in building and testing microservices and APIs over a one-month intensive period.
                   </p>
                   <div className="experience-tags">
-                    <span>Collaboration</span>
-                    <span>Problem-solving</span>
+                    <span>Backend Development</span>
+                    <span>Remote Work</span>
+                  </div>
+                  {/* Updated to a PDF button instead of an image */}
+                  <div className="experience-evidence" style={{ border: 'none', backgroundColor: 'transparent', padding: 0 }}>
+                    <a href="/Akin PTe.pdf" target="_blank" rel="noopener noreferrer" className="contact-button" style={{ display: 'inline-flex', marginTop: '0.5rem' }}>
+                      View Certificate 
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px' }}>
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                      </svg>
+                    </a>
                   </div>
                 </div>
               </article>
 
+              {/* Experience 2: Fusemachines */}
               <article className="experience-item">
-                <div className="experience-marker">
-                  <span />
-                </div>
-
+                <div className="experience-marker"><span /></div>
                 <div className="experience-meta">
                   <span>EXPERIENCE 02</span>
-                  <span>DATE TBD</span>
+                  <span>2026 COHORT</span>
                 </div>
-
                 <div className="experience-content">
-                  <p className="experience-type">ROLE / PLACEHOLDER</p>
-                  <h2>Your Second Role</h2>
-                  <p className="experience-company">
-                    Organization, Internship, or Team
-                  </p>
+                  <p className="experience-type">FELLOWSHIP</p>
+                  <h2>AI Fellow</h2>
+                  <p className="experience-company">Fusemachines</p>
                   <p className="experience-description">
-                    Describe another relevant role, internship, team
-                    contribution, or professional experience here.
+                    Selected for the prestigious AI Fellowship microdegree program, advancing practical skills in machine learning algorithms and AI system design.
                   </p>
                   <div className="experience-tags">
-                    <span>Technology</span>
-                    <span>Learning</span>
+                    <span>Artificial Intelligence</span>
+                    <span>Machine Learning</span>
+                  </div>
+          
+                </div>
+              </article>
+
+              {/* Experience 3: Leapfrog */}
+              <article className="experience-item">
+                <div className="experience-marker"><span /></div>
+                <div className="experience-meta">
+                  <span>EXPERIENCE 03</span>
+                  <span>2026</span>
+                </div>
+                <div className="experience-content">
+                  <p className="experience-type">PARTNERSHIP PROGRAM</p>
+                  <h2>Student Partner</h2>
+                  <p className="experience-company">Leapfrog Technology (LSPP)</p>
+                  <p className="experience-description">
+                    Participated in the Leapfrog Student Partnership Program and took the initiative to conduct 2-3 technical sessions, mentoring peers and sharing industry knowledge.
+                  </p>
+                  <div className="experience-tags">
+                    <span>Mentorship</span>
+                    <span>Tech Community</span>
+                  </div>
+                  <div className="experience-evidence" style={{ border: 'none', backgroundColor: 'transparent', padding: 0 }}>
+                    <a href="/leapfrog.pdf" target="_blank" rel="noopener noreferrer" className="contact-button" style={{ display: 'inline-flex', marginTop: '0.5rem' }}>
+                      View Certificate 
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px' }}>
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              {/* Experience 4: Tensor Club */}
+              <article className="experience-item">
+                <div className="experience-marker"><span /></div>
+                <div className="experience-meta">
+                  <span>EXPERIENCE 04</span>
+                  <span>2023-2026</span>
+                </div>
+                <div className="experience-content">
+                  <p className="experience-type">CLUB LEADERSHIP</p>
+                  <h2>Joint Secretary</h2>
+                  <p className="experience-company">Tensor (AI & Data Science Club), IOE Thapathali</p>
+                  <p className="experience-description">
+                    Led club initiatives to foster AI and data science education among students. Organized and conducted an outreach tech session at Durbar High School. Also conducted various knowledge sharing sessions in the college both online and offline.
+                  </p>
+                  <div className="experience-tags">
+                    <span>Leadership</span>
+                    <span>Public Speaking</span>
+                    <span>Knowledge Sharing</span>
+                  </div>
+                 
+                </div>
+              </article>
+
+              {/* Experience 5: ANAIS */}
+              <article className="experience-item">
+                <div className="experience-marker"><span /></div>
+                <div className="experience-meta">
+                  <span>EXPERIENCE 05</span>
+                  <span>2026</span>
+                </div>
+                <div className="experience-content">
+                  <p className="experience-type">WORKSHOP</p>
+                  <h2>Participant</h2>
+                  <p className="experience-company">Annual Nepal AI School (ANAIS)</p>
+                  <p className="experience-description">
+                    Attended intensive sessions focused on advanced AI research, networking with industry experts and deepening knowledge in modern AI architectures.
+                  </p>
+                  <div className="experience-tags">
+                    <span>AI Research</span>
+                    <span>Networking</span>
+                  </div>
+                  <div className="experience-evidence">
+                    <img src="/ANAIS.jpg" alt="ANAIS 2026 Evidence" />
                   </div>
                 </div>
               </article>
@@ -335,6 +420,7 @@ export default function App() {
             </p>
           </div>
         )}
+
 
         {activeSection === "Skills" && (
           <div className="skills-layout">
